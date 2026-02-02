@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Question {{ number }} - IFIX Assessments{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/questions.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="assessment-card">
+    <div class="question-header">
+        <div class="question-progress">
+            <span class="question-number">Question {{ number }}</span>
+            <span class="total-questions">of {{ total_questions }}</span>
+        </div>
+        <div class="timer-container">
+            <span class="timer-label">Time Remaining</span>
+            <span class="timer-display" id="timer-display">39:45</span>
+        </div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-label">
+            <span class="progress-text">Assessment Progress</span>
+            <span class="progress-text">{{ ((number/total_questions)*100)|round|int }}%</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ (number/total_questions)*100 }}%"></div>
+        </div>
+    </div>
+    
+    <div class="assessment-instructions">
+        <div class="instructions-header">
+            <h4>Instructions</h4>
+        </div>
+        <ul class="instructions-list">
+            <li>Select the best answer for each question</li>
+            <li>You cannot return to previous questions</li>
+            <li>Timer will stop when you submit</li>
+            <li>Passing score is 70% or higher</li>
+        </ul>
+    </div>
+    
+    <div class="question-text">
+        What is the shortcut to create a new workbook in Excel?
+    </div>
+    
+    <form method="post" class="answer-form" onsubmit="if(window.assessmentTimer) window.assessmentTimer.isRunning = false;">
+        <div class="radio-group">
+            <div class="radio-option">
+                <label>
+                    <input type="radio" name="answer" value="ctrl_n" required>
+                    <span class="answer-text">Ctrl + N</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="radio-group">
+            <div class="radio-option">
+                <label>
+                    <input type="radio" name="answer" value="ctrl_o">
+                    <span class="answer-text">Ctrl + O</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="radio-group">
+            <div class="radio-option">
+                <label>
+                    <input type="radio" name="answer" value="ctrl_s">
+                    <span class="answer-text">Ctrl + S</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="radio-group">
+            <div class="radio-option">
+                <label>
+                    <input type="radio" name="answer" value="ctrl_p">
+                    <span class="answer-text">Ctrl + P</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="question-navigation">
+            <div></div> <!-- Empty div for spacing -->
+            <button type="submit" class="btn btn-primary nav-btn">
+                {% if number == total_questions %}
+                Finish Assessment
+                {% else %}
+                Next Question
+                <span style="margin-left: 8px;">→</span>
+                {% endif %}
+            </button>
+        </div>
+    </form>
+    
+    <div class="question-counter">
+        Question {{ number }} of {{ total_questions }}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/timer.js') }}"></script>
+<script>
+    // Add active class to selected radio option
+    document.querySelectorAll('.radio-option input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Remove selected class from all options
+            document.querySelectorAll('.radio-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            // Add selected class to parent of checked radio
+            if (this.checked) {
+                this.closest('.radio-option').classList.add('selected');
+            }
+        });
+    });
+</script>
+{% endblock %}

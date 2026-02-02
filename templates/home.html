@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Home - IFIX Assessments{% endblock %}
+
+{% block content %}
+<div class="card text-center">
+    <h1 class="main-heading">Welcome to IFIX Assessments</h1>
+    <p class="subtitle">Professional assessment platform for Excel training and skill evaluation</p>
+    
+    <div class="action-buttons">
+        <a href="/select-assessment" class="btn btn-primary">Start New Assessment</a>
+        <a href="/admin" class="btn btn-outline">Admin Dashboard</a>
+    </div>
+</div>
+
+<div class="features-grid">
+    <div class="feature-card">
+        <div class="feature-icon">A</div>
+        <h3>Take Assessment</h3>
+        <p>Evaluate your Excel skills with our comprehensive assessment.</p>
+        <ul class="feature-list">
+            <li>40-minute time limit</li>
+            <li>Multiple choice questions</li>
+            <li>Immediate results</li>
+            <li>Certificate upon completion</li>
+        </ul>
+    </div>
+    
+    <div class="feature-card">
+        <div class="feature-icon">R</div>
+        <h3>View Results</h3>
+        <p>Track your progress and download professional certificates.</p>
+        <p>All attempts are securely stored and accessible for review.</p>
+    </div>
+    
+    <div class="feature-card">
+        <div class="feature-icon">M</div>
+        <h3>Admin Access</h3>
+        <p>Full administrative control over assessments and data.</p>
+        <ul class="feature-list">
+            <li>View all attempts</li>
+            <li>Export to CSV/Excel</li>
+            <li>Generate certificates</li>
+            <li>Analytics dashboard</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

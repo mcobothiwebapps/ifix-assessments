@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Assessment Complete - IFIX{% endblock %}
+
+{% block content %}
+<div class="card text-center">
+    <h1 class="main-heading">Assessment Complete</h1>
+    <p class="subtitle">Thank you for completing the {{ attempt.assessment_type }} assessment.</p>
+</div>
+
+<div class="card results-card">
+    <h2>Your Results</h2>
+    
+    <div class="score-display">
+        <div class="score-main">{{ attempt.score }}/{{ attempt.total_questions }}</div>
+        <div class="score-percentage">{{ attempt.percentage }}%</div>
+        <div class="status-badge {{ 'status-pass' if passed else 'status-fail' }}">
+            {% if passed %}PASS{% else %}NEEDS IMPROVEMENT{% endif %}
+        </div>
+    </div>
+    
+    <div class="results-details">
+        <h3>Assessment Details</h3>
+        <table class="results-table">
+            <tr>
+                <td class="label">Candidate Name</td>
+                <td class="value">{{ attempt.user_name }}</td>
+            </tr>
+            <tr>
+                <td class="label">Email Address</td>
+                <td class="value">{{ attempt.user_email }}</td>
+            </tr>
+            <tr>
+                <td class="label">Business/Organization</td>
+                <td class="value">{{ attempt.user_business }}</td>
+            </tr>
+            <tr>
+                <td class="label">Assessment Type</td>
+                <td class="value">{{ attempt.assessment_type }}</td>
+            </tr>
+            <tr>
+                <td class="label">Completion Date</td>
+                <td class="value">{{ attempt.created_at.strftime('%B %d, %Y') }}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="email-status">
+        <h3>Email Status</h3>
+        <p class="{{ 'status-success' if email_sent else 'status-error' }}">
+            {% if email_sent %}
+            Results have been sent to {{ attempt.user_email }}
+            {% else %}
+            Email could not be sent. Please contact support.
+            {% endif %}
+        </p>
+    </div>
+    
+    {% if passed %}
+    <div class="certificate-section blue-gradient">
+        <h3>Certificate Available</h3>
+        <p class>Congratulations! You've passed the assessment.</p>
+        
+        <form action="/download-certificate" method="post">
+            <input type="hidden" name="attempt_id" value="{{ attempt.id }}">
+            <button type="submit" class="btn btn-light">
+                Download Certificate (PDF)
+            </button>
+        </form>
+        
+        <p class="certificate-note">
+            The certificate includes your name, score, assessment type, and completion date.
+        </p>
+    </div>
+    {% endif %}
+    
+    <div class="action-buttons">
+        <a href="/" class="btn btn-outline">Return to Home</a>
+        <a href="/select-assessment" class="btn btn-primary">Take Another Assessment</a>
+    </div>
+</div>
+{% endblock %}

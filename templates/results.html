@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assessment Results</title>
+</head>
+<body>
+    <h1>🎯 Assessment Results</h1>
+    
+    <h2>Your Answers:</h2>
+    <table border="1" style="border-collapse: collapse; width: 100%;">
+        <thead>
+            <tr>
+                <th style="padding: 8px;">Question</th>
+                <th style="padding: 8px;">Your Answer</th>
+                <th style="padding: 8px;">Correct Answer</th>
+                <th style="padding: 8px;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for question_num, user_answer in answers.items() %}
+            <tr>
+                <td style="padding: 8px;">Question {{ question_num }}</td>
+                <td style="padding: 8px;">{{ user_answer }}</td>
+                <td style="padding: 8px;">{{ correct_answers.get(question_num, 'N/A') }}</td>
+                <td style="padding: 8px;">
+                    {% if user_answer == correct_answers.get(question_num) %}
+                        ✅ Correct
+                    {% else %}
+                        ❌ Incorrect
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>📊 Score: {{ score }}/{{ total_questions }} ({{ percentage }}%)</h2>
+    
+    <h3>Next Steps:</h3>
+    <p>Your results will be emailed to you shortly.</p>
+    <p>You can also download a PDF certificate if you scored above 70%.</p>
+    
+    <form action="/finish" method="post" style="margin-top: 20px;">
+        <button type="submit">Finish Assessment</button>
+    </form>
+</body>
+</html>

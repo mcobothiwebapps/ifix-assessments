@@ -1,0 +1,342 @@
+[
+  {
+    "id": 1,
+    "assessment_type": "Municipalities",
+    "question": "What is the formula to sum the values in cells B5 to B18 on cell B19?",
+    "options": [
+      "=SUM(B5,B18)",
+      "I'm not sure",
+      "=SUM(B5:B18)",
+      "=SUM(A5:B18)",
+      "=AVERAGE(B5:B18)"
+    ],
+    "correct_answers": ["=SUM(B5:B18)"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 2,
+    "assessment_type": "Municipalities",
+    "question": "The best (most appropriate) graph to show the expenditure by function per year is a ....?",
+    "options": [
+      "Pie Chart",
+      "Scatter graph",
+      "I'm not sure",
+      "Radar Graph",
+      "Clustered Column graph"
+    ],
+    "correct_answers": ["Clustered Column graph"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 3,
+    "assessment_type": "Municipalities",
+    "question": "To get the percentage of total salaries for senior management and municipal staff, you....",
+    "options": [
+      "Copy C2 to C3 and C4",
+      "In C2, change '=B2/B5' to '=B$2/B5' then copy to C3 and C4",
+      "In C2, change '=B2/B5' to '=B2/B$5' then copy to C3 and C4",
+      "I'm not sure",
+      "Drag C2 onto C3 and C4"
+    ],
+    "correct_answers": ["In C2, change '=B2/B5' to '=B2/B$5' then copy to C3 and C4"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 4,
+    "assessment_type": "Municipalities",
+    "question": "In cell C5 if the formula is =B5/B5 the answer displayed will be...?",
+    "options": [
+      "0%",
+      "I'm not sure",
+      "#N/A",
+      "100%",
+      "#DIV/0!"
+    ],
+    "correct_answers": ["100%"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 5,
+    "assessment_type": "Municipalities",
+    "question": "What is the keyboard shortcut for reversing (undoing) your last action?",
+    "options": [
+      "Ctrl+U",
+      "Ctrl+X",
+      "Ctrl+Y",
+      "Ctrl+Z",
+      "Don't know"
+    ],
+    "correct_answers": ["Ctrl+Z"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 6,
+    "assessment_type": "Municipalities",
+    "question": "The VLOOKUP function in G4 to pull through the municipal project for municipal standard chart of accounts will have the following answer",
+    "options": [
+      "SCOA",
+      "GRAP",
+      "mSCOA",
+      "MFMA",
+      "PFMA"
+    ],
+    "correct_answers": ["mSCOA"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 7,
+    "assessment_type": "Municipalities",
+    "question": "The answers that will be shown in cell A15 and A16 (respectively) are",
+    "options": [
+      "16 and 9830 and 47004",
+      "16 and 42055 and 51588",
+      "18 and 9830 and 47004",
+      "I'm not sure",
+      "0 and 93643 and 47004"
+    ],
+    "correct_answers": ["16 and 9830 and 47004"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 8,
+    "assessment_type": "Municipalities",
+    "question": "How do I make cell A1 look like cell A3",
+    "options": [
+      "Don't Know",
+      "Go to the Format Cells option and Merge Cells",
+      "Go to the Format Cells option and Wrap Text",
+      "Hold ALT down and click enter at each new line point",
+      "Go to the Format Cells option and Shrink to Fit"
+    ],
+    "correct_answers": ["Go to the Format Cells option and Wrap Text"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 9,
+    "assessment_type": "Municipalities",
+    "question": "In column E, which formula would you use to extract the first eight characters (letters) of the Long Code in column D",
+    "options": [
+      "I'm not sure",
+      "AVERAGE",
+      "COUNTIF",
+      "RIGHT",
+      "LEFT"
+    ],
+    "correct_answers": ["LEFT"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 10,
+    "assessment_type": "Municipalities",
+    "question": "If you sort the following list in ascending order what will be the result",
+    "options": [
+      "Don't Know",
+      "A1, A10, A100, A11, A2, A20",
+      "A100, A10, A1, A11, A20, A2",
+      "A1, A2, A10, A11, A20, A100",
+      "A20, A2, A11, A100, A10, A1"
+    ],
+    "correct_answers": ["A1, A10, A100, A11, A2, A20"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 11,
+    "assessment_type": "Municipalities",
+    "question": "What is the shortcut key to save a workbook?",
+    "options": [
+      "Ctrl+Enter",
+      "Ctrl+Shift+S",
+      "Alt+S",
+      "Don't know",
+      "Ctrl+S"
+    ],
+    "correct_answers": ["Ctrl+S"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 12,
+    "assessment_type": "Municipalities",
+    "question": "If the result of a formula is #N/A, you can improve the formula by using a combination of which functions",
+    "options": [
+      "IFERROR",
+      "IF & NA",
+      "IF & ISERROR",
+      "Don't Know",
+      "IF & CELL"
+    ],
+    "correct_answers": ["IFERROR"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 13,
+    "assessment_type": "Municipalities",
+    "question": "Which is the easiest way to link a cell to another sheet or spreadsheet?",
+    "options": [
+      "Don't know",
+      "Type = and click on the other sheet or spreadsheet cell",
+      "Type the name of the sheet, a ! and the cell reference",
+      "Type the name of the sheet, a ' and the cell reference",
+      "Type the name of the sheet and the cell reference"
+    ],
+    "correct_answers": ["Type = and click on the other sheet or spreadsheet cell"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 14,
+    "assessment_type": "Municipalities",
+    "question": "Which functionality would you use if you want to easily view only the 'Y's for Break Allowed? (column H) without deleting the 'N's",
+    "options": [
+      "I'm not sure",
+      "Filter",
+      "Hide Rows",
+      "Freeze Rows",
+      "Merge and Center"
+    ],
+    "correct_answers": ["Filter"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 15,
+    "assessment_type": "Municipalities",
+    "question": "In the below Pivot Table, what is the best way to calculate the percentage each item makes up of the total e.g. MTN is 21.6% i.e. 484.23 / 2 237.93",
+    "options": [
+      "Copy and paste (as values) the Pivot Table to another part of the spreadsheet and then create the formula",
+      "In cell D4 type equals and click on cell B4, type / and click on B10 so that the formula says =GETPIVOTDATA('Bill',$A$3,'Destination Network','Cell C')/GETPIVOTDATA('Bill',$A$3). Copy it down",
+      "In cell D4 type the formula =B4/B$10 and copy it down to the other cells",
+      "Click in the Pivot Table, go to 'Value Field Settings', click on 'Show Value as' and choose the appropriate option",
+      "Don't know"
+    ],
+    "correct_answers": ["In cell D4 type the formula =B4/B$10 and copy it down to the other cells"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 16,
+    "assessment_type": "Municipalities",
+    "question": "Which functionality would you use to split the text (using the '|' as a separator) such that the data is in columns?",
+    "options": [
+      "Data Validation",
+      "Text to Columns then Delimited",
+      "I'm not sure",
+      "Remove Duplicated",
+      "Text to Columns then Fixed width"
+    ],
+    "correct_answers": ["Text to Columns then Delimited"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 17,
+    "assessment_type": "Municipalities",
+    "question": "Which is the quickest way to change the way the printer prints (portrait to landscape)?",
+    "options": [
+      "Go to Page Setup and choose the Landscape option",
+      "Go to Print Preview and choose page setup and choose the landscape option",
+      "Use the Print Option and then change the Printers Properties",
+      "Don't Know",
+      "Choose the Print Area option and Set the print Area to be landscape"
+    ],
+    "correct_answers": ["Go to Page Setup and choose the Landscape option"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 18,
+    "assessment_type": "Municipalities",
+    "question": "If a row is hidden e.g. rows 7 and 8 in the picture, and you copy the formula in C6 by dragging it down from C6 to C9 the following will happen",
+    "options": [
+      "The formula in C9 will say = B5+C5",
+      "I'm not sure",
+      "The formula will be copied into C9 only",
+      "The formula will be included in the hidden cells",
+      "The hidden cells will be overwritten with the new formula"
+    ],
+    "correct_answers": ["The formula will be included in the hidden cells"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 19,
+    "assessment_type": "Municipalities",
+    "question": "The result of the formula in cell B6 will be",
+    "options": [
+      "0.08",
+      "4",
+      "Don't know",
+      "8",
+      "0.04"
+    ],
+    "correct_answers": ["8"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 20,
+    "assessment_type": "Municipalities",
+    "question": "How do you create a pivot table in Excel?",
+    "options": [
+      "I'm not sure",
+      "Select the dataset/table, then go to insert then click on Pivot Table",
+      "Select the dataset/table, then press Ctrl + L",
+      "Select the dataset/table, then go to insert then click on Recommended Pivot Table",
+      "Select the dataset/table, then go to insert then click on Illustrations"
+    ],
+    "correct_answers": [
+      "Select the dataset/table, then go to insert then click on Pivot Table",
+      "Select the dataset/table, then go to insert then click on Recommended Pivot Table"
+    ],
+    "question_type": "checkbox",
+    "points": 5
+  },
+  {
+    "id": 21,
+    "assessment_type": "Municipalities",
+    "question": "What is the shortcut key to Copy cells?",
+    "options": [
+      "Shift+C",
+      "Ctrl+A",
+      "Ctrl+C",
+      "Don't Know",
+      "Alt+Z"
+    ],
+    "correct_answers": ["Ctrl+C"],
+    "question_type": "radio",
+    "points": 5
+  },
+  {
+    "id": 22,
+    "assessment_type": "Municipalities",
+    "question": "What do you typically use Excel for in performing your work?",
+    "options": [],
+    "correct_answers": [],
+    "question_type": "text",
+    "points": 0
+  },
+  {
+    "id": 23,
+    "assessment_type": "Municipalities",
+    "question": "How many years experience do you have using Excel?",
+    "options": [
+      "0-5",
+      "6-10",
+      "11 and above"
+    ],
+    "correct_answers": [],
+    "question_type": "radio",
+    "points": 0
+  }
+]

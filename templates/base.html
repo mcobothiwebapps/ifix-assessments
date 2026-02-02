@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}IFIX Assessments{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Add these styles for the logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+            font-size: 1.5rem;
+            gap: 10px;
+        }
+        
+        .logo-image {
+            height: 70px;  /* Adjust as needed */
+            width: auto;
+            display: block;
+        }
+        
+        .logo-text {
+            color: #1A5AFF;  /* Your blue color from dashboard */
+            font-weight: 700;
+        }
+        
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav a:hover {
+            background-color: #f0f5ff;
+            color: #1A5AFF;
+        }
+        
+        .main-content {
+            min-height: 70vh;
+            padding: 40px 0;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .mt-1 {
+            margin-top: 10px;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="/" class="logo">
+                <img src="{{ url_for('static', filename='images/IFIX LEARNING LOGO2.png') }}" 
+                     alt="IFIX Assessments Logo" 
+                     class="logo-image">
+            </a>
+            <nav class="nav">
+                <a href="/">Home</a>
+                <a href="/start">Take Assessment</a>
+                <a href="/admin">Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 IFIX Assessments Platform. All rights reserved.</p>
+            <p class="mt-1">Secure, scalable assessment system</p>
+        </div>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

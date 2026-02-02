@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}Question {{ question_number }} - IFIX Assessments{% endblock %}
+
+{% block content %}
+<div class="assessment-card">
+    <div class="question-header">
+        <div class="question-progress">
+            <span class="question-number">Question {{ question_number }}</span>
+            <span class="total-questions">of {{ total_questions }}</span>
+        </div>
+        <div class="timer-container">
+            <span class="timer-label">Time Remaining</span>
+            <span class="timer-display" id="timer-display">40:00</span>
+        </div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-label">
+            <span class="progress-text">Assessment Progress</span>
+            <span class="progress-text">{{ ((question_number/total_questions)*100)|round|int }}%</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ (question_number/total_questions)*100 }}%"></div>
+        </div>
+    </div>
+    
+    <div class="question-text">
+        {{ question.question }}
+    </div>
+    
+    {% if question.get('has_image') %}
+    <div class="question-image">
+        <img src="{{ url_for('static', filename='images/questions/' ~ assessment_type ~ '/q' ~ question_number ~ '.png') }}" 
+             alt="Question {{ question_number }} image" 
+             onerror="this.style.display='none';">
+    </div>
+    {% endif %}
+    
+    <form method="post" class="answer-form" onsubmit="if(window.assessmentTimer) window.assessmentTimer.isRunning = false;">
+        
+        {% if question.question_type == 'radio' %}
+            <!-- Radio Button Questions - Using INDEX values (0, 1, 2, ...) -->
+            {% for option in question.options %}
+            <div class="radio-group">
+                <div class="radio-option">
+                    <label>
+                        <!-- Use index (0-based) for simpler handling -->
+                        <input type="radio" name="answer" 
+                               value="{{ loop.index0 }}" 
+                               {% if question.points > 0 %}required{% endif %}
+                               {% if question.points == 0 %}data-no-score="true"{% endif %}>
+                        <span class="answer-text">{{ option }}</span>
+                        {% if question.points == 0 %}
+                        <span class="no-score-indicator">(Does not affect score)</span>
+                        {% endif %}
+                    </label>
+                </div>
+            </div>
+            {% endfor %}
+            
+        {% elif question.question_type == 'checkbox' %}
+            <!-- Checkbox Questions (multiple answers) - Using INDEX values -->
+            {% for option in question.options %}
+            <div class="checkbox-group">
+                <div class="checkbox-option">
+                    <label>
+                        <!-- Use index (0-based) for simpler handling -->
+                        <input type="checkbox" name="answer" 
+                               value="{{ loop.index0 }}"
+                               {% if question.points == 0 %}data-no-score="true"{% endif %}>
+                        <span class="answer-text">{{ option }}</span>
+                        {% if question.points == 0 %}
+                        <span class="no-score-indicator">(Does not affect score)</span>
+                        {% endif %}
+                    </label>
+                </div>
+            </div>
+            {% endfor %}
+            
+        {% elif question.question_type == 'text' %}
+            <!-- Text Input Questions -->
+            <div class="text-input-group">
+                <textarea name="answer" class="form-control" rows="4" 
+                          placeholder="Type your answer here..."></textarea>
+            </div>
+            
+        {% endif %}
+        
+        <div class="question-navigation">
+            <div></div>
+            <button type="submit" class="btn btn-primary nav-btn">
+                {% if question_number == total_questions %}
+                Finish Assessment
+                {% else %}
+                Next Question
+                <span style="margin-left: 8px;">→</span>
+                {% endif %}
+            </button>
+        </div>
+    </form>
+    
+    <div class="question-counter">
+        Question {{ question_number }} of {{ total_questions }}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/timer.js') }}"></script>
+<script>
+    // Handle radio button selection
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            document.querySelectorAll('.radio-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            if (this.checked) {
+                this.closest('.radio-option').classList.add('selected');
+            }
+        });
+    });
+    
+    // Handle checkbox selection
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                this.closest('.checkbox-option').classList.add('selected');
+            } else {
+                this.closest('.checkbox-option').classList.remove('selected');
+            }
+        });
+    });
+</script>
+{% endblock %}

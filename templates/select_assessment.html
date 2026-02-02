@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Select Assessment - IFIX{% endblock %}
+
+{% block content %}
+<div class="card text-center">
+    <h1 class="main-heading">Select Assessment Type</h1>
+    <p class="subtitle">Choose the assessment that matches your training needs</p>
+</div>
+
+<div class="assessment-grid">
+    <div class="assessment-card">
+        <div class="assessment-header blue-gradient">
+            <h3>Excel For Municipalities</h3>
+        </div>
+        <div class="assessment-body">
+            <div class="assessment-details">
+                <div class="detail-item">
+                    <span class="detail-label">Questions</span>
+                    <span class="detail-value">23</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Time</span>
+                    <span class="detail-value">40 minutes</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Passing Score</span>
+                    <span class="detail-value">70%</span>
+                </div>
+            </div>
+            <p class="assessment-description">Focus: Municipal finance, reporting, and compliance</p>
+            
+            <form action="/register" method="get">
+                <input type="hidden" name="assessment_type" value="Municipalities">
+                <button type="submit" class="btn btn-primary full-width">Select This Assessment</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="assessment-card">
+        <div class="assessment-header green-gradient">
+            <h3>Excel For Non-Municipalities</h3>
+        </div>
+        <div class="assessment-body">
+            <div class="assessment-details">
+                <div class="detail-item">
+                    <span class="detail-label">Questions</span>
+                    <span class="detail-value">22</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Time</span>
+                    <span class="detail-value">40 minutes</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Passing Score</span>
+                    <span class="detail-value">70%</span>
+                </div>
+            </div>
+            <p class="assessment-description">Focus: Business analysis, dashboards, and reporting</p>
+            
+            <form action="/register" method="get">
+                <input type="hidden" name="assessment_type" value="Non-Municipalities">
+                <button type="submit" class="btn btn-success full-width">Select This Assessment</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="card info-card">
+    <h3>What to Expect</h3>
+    <ul class="info-list">
+        <li>After selection, you'll complete a quick registration</li>
+        <li>40-minute timed assessment</li>
+        <li>Results emailed immediately after completion</li>
+        <li>Certificate available for download if you pass</li>
+        <li>All data is stored securely for admin reporting</li>
+    </ul>
+</div>
+{% endblock %}

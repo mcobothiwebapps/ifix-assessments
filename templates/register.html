@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Register - IFIX Assessments{% endblock %}
+
+{% block content %}
+<div class="register-card">
+    <h1 class="register-heading">Register for Assessment</h1>
+    <p class="register-subtitle">Please provide your details to begin the {{ assessment_type }} assessment</p>
+    
+    <div class="assessment-info">
+        <h4>Assessment Details</h4>
+        <p>You are registering for the <strong>{{ assessment_type }}</strong> assessment. This assessment will test your Excel skills and knowledge.</p>
+    </div>
+    
+    <form method="post" action="/start-assessment" class="form-container">
+        <input type="hidden" name="assessment_type" value="{{ assessment_type }}">
+        
+        <div class="form-group">
+            <label class="form-label required" for="name">Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" required 
+                   placeholder="Enter your full name">
+            <span class="form-helper">As it should appear on your certificate</span>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label required" for="email">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" required 
+                   placeholder="your.email@example.com">
+            <span class="form-helper">Your results and certificate will be sent to this address</span>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label required" for="business">Business/Organization</label>
+            <input type="text" class="form-control" id="business" name="business" required 
+                   placeholder="Enter your company or organization name">
+            <span class="form-helper">Leave as "N/A" if not applicable</span>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label required" for="phone">Phone Number</label>
+            <input type="tel" class="form-control" id="phone" name="phone" required 
+                   placeholder="+27 12 345 6789">
+            <span class="form-helper">For verification purposes only</span>
+        </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+            <label class="form-check-label" for="terms">
+                I agree to the <a href="/terms" target="_blank">Terms of Service</a> and 
+                <a href="/privacy" target="_blank">Privacy Policy</a>. I understand that my 
+                assessment results may be used for training improvement purposes.
+            </label>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Start Assessment
+            </button>
+            <a href="/select-assessment" class="btn btn-outline">
+                Back to Selection
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

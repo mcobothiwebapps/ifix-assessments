@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Start Assessment - IFIX{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Excel Training Level Assessment</h1>
+    
+    <div class="mt-2">
+        <p>This assessment will help us understand your current Excel skill level and recommend appropriate training.</p>
+        
+        <div class="radio-group mt-2">
+            <h3>📋 Assessment Details</h3>
+            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                <li><strong>Time Limit:</strong> 40 minutes</li>
+                <li><strong>Questions:</strong> 20 multiple choice</li>
+                <li><strong>Scoring:</strong> Automatic</li>
+                <li><strong>Results:</strong> Sent via email</li>
+                <li><strong>Certificate:</strong> Generated for scores above 70%</li>
+            </ul>
+        </div>
+        
+        <div class="radio-group mt-2">
+            <h3>⚠️ Important Notes</h3>
+            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                <li>Do not refresh the page during the assessment</li>
+                <li>Timer cannot be paused</li>
+                <li>Answers are saved automatically</li>
+                <li>Complete all questions before time expires</li>
+            </ul>
+        </div>
+        
+        <div class="mt-3">
+            <form action="/question/1" method="get">
+                <button type="submit" class="btn">Start Assessment Now</button>
+            </form>
+            <a href="/" class="btn btn-secondary mt-1">Cancel</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

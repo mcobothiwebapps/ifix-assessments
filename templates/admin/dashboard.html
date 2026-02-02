@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IFIX Admin - Assessment Results</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: #f9fafb; 
+            color: #333;
+        }
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+        }
+        
+        /* Header */
+        .header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 30px; 
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .header h1 { 
+            margin: 0; 
+            color: #1A5AFF; 
+            font-size: 28px;
+        }
+        
+        /* Stats Cards */
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+            margin-bottom: 30px; 
+        }
+        .stat-card { 
+            background: white; 
+            padding: 24px; 
+            border-radius: 12px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
+            border-left: 4px solid #1A5AFF;
+        }
+        .stat-card h3 { 
+            margin: 0 0 10px 0; 
+            color: #64748b; 
+            font-size: 14px; 
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .stat-value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: #1A5AFF; 
+            margin: 0;
+        }
+        .stat-subtext {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 8px;
+        }
+        
+        /* Table Styles */
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse;
+        }
+        th { 
+            background: #1A5AFF; 
+            color: white; 
+            font-weight: 600;
+            padding: 16px 12px;
+            text-align: left;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        td { 
+            padding: 16px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+        tr:hover {
+            background: #f8fafc;
+        }
+        
+        /* Score Styling */
+        .score-cell {
+            min-width: 120px;
+        }
+        .score-main {
+            font-weight: 700;
+            font-size: 16px;
+            color: #1e293b;
+            display: block;
+        }
+        .score-detail {
+            font-size: 13px;
+            color: #64748b;
+            display: block;
+            margin-top: 4px;
+        }
+        .score-percentage {
+            font-weight: 600;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .status-pass {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status-fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+        .view-btn {
+            background: #1A5AFF;
+            color: white;
+        }
+        .view-btn:hover {
+            background: #0A45D4;
+        }
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+        }
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+        .report-btn {
+            background: #10b981;
+            color: white;
+        }
+        .report-btn:hover {
+            background: #0da36a;
+        }
+        
+        /* Export Section */
+        .export-section {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .export-section h3 {
+            margin: 0 0 16px 0;
+            color: #1e293b;
+            font-size: 18px;
+        }
+        .export-btn {
+            background: #1A5AFF;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        .export-btn:hover {
+            background: #0A45D4;
+            transform: translateY(-1px);
+        }
+        
+        /* Time Estimation */
+        .time-estimate {
+            font-size: 14px;
+            color: #64748b;
+        }
+        
+        /* Back Link */
+        .back-link {
+            color: #1A5AFF;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+            th, td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>IFIX Assessment Admin Dashboard</h1>
+            <a href="/" class="back-link">
+                <span>←</span> Back to Home
+            </a>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Attempts</h3>
+                <p class="stat-value">{{ attempts|length }}</p>
+                <p class="stat-subtext">All assessment submissions</p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Pass Rate</h3>
+                <p class="stat-value">
+                    {% set pass_count = attempts|selectattr('percentage', '>=', 70)|list|length %}
+                    {% if attempts|length > 0 %}
+                        {{ ((pass_count / attempts|length) * 100)|round|int }}%
+                    {% else %}
+                        0%
+                    {% endif %}
+                </p>
+                <p class="stat-subtext">{{ pass_count }} out of {{ attempts|length }} passed</p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Average Score</h3>
+                <p class="stat-value">
+                    {% if attempts|length > 0 %}
+                        {{ (attempts|map(attribute='percentage')|sum / attempts|length)|round|int }}%
+                    {% else %}
+                        0%
+                    {% endif %}
+                </p>
+                <p class="stat-subtext">Across all assessments</p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Total Questions</h3>
+                <p class="stat-value">
+                    {% if attempts|length > 0 %}
+                        {{ attempts|map(attribute='total_questions')|max }}
+                    {% else %}
+                        0
+                    {% endif %}
+                </p>
+                <p class="stat-subtext">Per assessment</p>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Quiz Name</th>
+                        <th>Score</th>
+                        <th>Time To Complete</th>
+                        <th>Name</th>
+                        <th>Business</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for attempt in attempts %}
+                    <tr>
+                        <!-- Quiz Name -->
+                        <td>
+                            <strong style="color: #1A5AFF;">{{ attempt.assessment_type }}</strong>
+                        </td>
+                        
+                        <!-- Score -->
+                        <td class="score-cell">
+                            <span class="score-main">{{ attempt.score }}/{{ attempt.total_questions }}</span>
+                            <span class="score-detail">
+                                <span class="score-percentage">{{ attempt.percentage }}%</span>
+                                <span class="status-badge {{ 'status-pass' if attempt.percentage >= 70 else 'status-fail' }}">
+                                    {% if attempt.percentage >= 70 %}PASS{% else %}FAIL{% endif %}
+                                </span>
+                            </span>
+                        </td>
+                        
+                        <!-- Time Estimate -->
+                        <!-- Time To Complete -->
+<!-- In dashboard.html, update the Time To Complete column: -->
+<td>
+    <span class="time-estimate">
+        {% if attempt.time_taken_minutes is not none %}
+            <!-- Show actual time taken -->
+            {{ attempt.time_taken_formatted }}
+        {% else %}
+            <!-- Show estimated time -->
+            {% if attempt.assessment_type == "Municipalities" %}
+                23 questions<br>~35 minutes (est.)
+            {% else %}
+                22 questions<br>~33 minutes (est.)
+            {% endif %}
+        {% endif %}
+    </span>
+</td>
+                        
+                        <!-- Name -->
+                        <td>
+                            <strong>{{ attempt.user_name }}</strong>
+                            <div style="font-size: 12px; color: #94a3b8;">
+                                ID: {{ attempt.id }}
+                            </div>
+                        </td>
+                        
+                        <!-- Business -->
+                        <td>{{ attempt.user_business or 'N/A' }}</td>
+                        
+                        <!-- Email -->
+                        <td>{{ attempt.user_email }}</td>
+                        
+                        <!-- Phone -->
+                        <td>{{ attempt.user_phone or 'N/A' }}</td>
+                        
+                        <!-- Actions -->
+                        <td>
+                            <div class="action-buttons">
+                                <a href="/admin/view/{{ attempt.id }}" class="action-btn view-btn">
+                                    📊 View Results
+                                </a>
+                                <form action="/admin/delete/{{ attempt.id }}" method="POST" style="display: inline;">
+                                    <button type="submit" class="action-btn delete-btn" 
+                                            onclick="return confirm('Are you sure you want to delete attempt #{{ attempt.id }}?')">
+                                        🗑️ Delete
+                                    </button>
+                                </form>
+                                <a href="/admin/report/{{ attempt.id }}" class="action-btn report-btn">
+                                    📋 Proctor Report
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="export-section">
+            <h3>Export Data</h3>
+            <a href="/admin/export/csv">
+                <button class="export-btn">
+                    📥 Download CSV Export
+                </button>
+            </a>
+            <p style="margin-top: 12px; color: #64748b; font-size: 14px;">
+                Export includes all assessment data, user information, and scores.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
