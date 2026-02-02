@@ -29,13 +29,6 @@ from routes.admin import admin
 app.register_blueprint(main)
 app.register_blueprint(admin)
 
-if __name__ == "__main__":
-    # Debug: Check template folder
-    print(f"Template folder: {app.template_folder}")
-    print(f"Current directory: {os.getcwd()}")
-    print(f"Dashboard exists: {os.path.exists(os.path.join(app.template_folder, 'dashboard.html'))}")
-    
-    app.run(debug=True, port=5000)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
